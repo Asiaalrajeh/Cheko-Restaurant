@@ -143,6 +143,10 @@ body{
   border-radius: 15px;
 }
 
+.noResult{
+  
+}
+
 @media screen and (max-width: 1000px) {
   .form input{
     padding:0;

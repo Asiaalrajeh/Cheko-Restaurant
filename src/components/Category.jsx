@@ -55,10 +55,9 @@ const Category = ({items}) => {
     setSCount(items.filter(obj => obj.category === 'sequi').length)
     setSushiCount(items.filter(obj => obj.category === 'corrupti').length)
 
-    console.log(BreakfastCount)
+    
     {arr.map(item => {
         if(item.label === 'Breakfast'){
-            console.log(BreakfastCount)
             return item.count= BreakfastCount;
         }
         if(item.label === 'Drinks'){

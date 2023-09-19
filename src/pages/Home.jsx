@@ -8,6 +8,7 @@ const Home = (prop) => {
     const [error, setError] = useState(null);
     const [isLoaded, setIsLoaded] = useState(false);
     const [items, setItems] = useState([]);
+    const [fitems, setFItems] = useState([]);
  
      console.log(prop);
     
@@ -18,6 +19,7 @@ const Home = (prop) => {
           (result) => {
             setIsLoaded(true);
             setItems(result);
+            setFItems(result)
           },
          
           (error) => {
@@ -29,6 +31,11 @@ const Home = (prop) => {
         
     }, [])
 
+    const filterd = items.filter((item)=>{
+      if(item.category.toLowerCase().includes(prop.f) && (item.name.toLowerCase().includes(prop.p) || item.category.toLowerCase().includes(prop.p))) 
+       return item;
+      });
+
     if (error) {
       return <div>Error: {error.message}</div>;
     } else if (!isLoaded) {
@@ -39,16 +46,16 @@ const Home = (prop) => {
           <div>
             <Category items={items}/>
           <ul>
-          {items.filter((item)=>{
-             //if(prop.p === "") return item;
-             if(item.name.toLowerCase().includes(prop.p) || item.category.toLowerCase().includes(prop.p)) return item;
-             if(item.category.toLowerCase().includes(prop.f)) return item;
-
-            }).map(item => (
+           { filterd.length > 0 ?
+            filterd.map(item => (
               <li key={item.id}>
                 <FoodCard food ={item}/>
               </li>
-            ))}
+            )) :
+            <div className='noResult'>
+              no result found
+            </div>
+          }
           </ul>
           </div>
         );
