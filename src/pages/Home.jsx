@@ -1,16 +1,16 @@
 import React from 'react'
 import { useState,useEffect } from 'react';
 import {FoodCard} from '../components/FoodCard';
+import Category from '../components/Category';
 
-function Home() {
+const Home = (prop) => {
   
     const [error, setError] = useState(null);
     const [isLoaded, setIsLoaded] = useState(false);
     const [items, setItems] = useState([]);
-
-    // Note: the empty deps array [] means
-    // this useEffect will run once
-    // similar to componentDidMount()
+ 
+     console.log(prop);
+    
     useEffect(() => {
       fetch("https://6506a5173a38daf4803e8f5c.mockapi.io/api/cheko/restaurants")
         .then(res => res.json())
@@ -19,14 +19,14 @@ function Home() {
             setIsLoaded(true);
             setItems(result);
           },
-          // Note: it's important to handle errors here
-          // instead of a catch() block so that we don't swallow
-          // exceptions from actual bugs in components.
+         
           (error) => {
             setIsLoaded(true);
             setError(error);
           }
         )
+
+        
     }, [])
 
     if (error) {
@@ -36,13 +36,21 @@ function Home() {
     } else {
    
         return (
+          <div>
+            <Category items={items}/>
           <ul>
-            {items.map(item => (
+          {items.filter((item)=>{
+             //if(prop.p === "") return item;
+             if(item.name.toLowerCase().includes(prop.p) || item.category.toLowerCase().includes(prop.p)) return item;
+             if(item.category.toLowerCase().includes(prop.f)) return item;
+
+            }).map(item => (
               <li key={item.id}>
                 <FoodCard food ={item}/>
               </li>
             ))}
           </ul>
+          </div>
         );
       }
     }

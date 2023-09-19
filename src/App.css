@@ -17,17 +17,10 @@ body{
 	}
 }
 
-/* .App {
-  text-align: center;
-} */
 
 .nav{
   display: flex;
 }
-.container button{
-  color: red;
-}
-
 
 
 .headerImg{
@@ -39,8 +32,7 @@ body{
  border-bottom-right-radius:30px;
  backdrop-filter: blur(5px);
  opacity: 0.9;
-/* background: url(<path-to-image>), lightgray 50% / cover no-repeat; */
-filter:  brightness(0.07);
+ filter:  brightness(0.07);
 }
 
 .navButtons{
@@ -63,7 +55,7 @@ filter:  brightness(0.07);
   text-decoration:none;
   color: #fff;
   font-family: Inter;
-font-size: 18px;
+  font-size: 1em;
 }
 
 .navButtons a:hover{
@@ -81,16 +73,18 @@ font-size: 18px;
   width: 78%;
   left: 11%;
   top: 10%;
-  align-items: center;
-  justify-content: center;
   padding: 0.5em 1em;
   border-radius: 15px;
   background: #FFF;
   box-shadow: 0px 4px 14px 0px rgba(0, 0, 0, 0.05);
 }
 
+.form {
+  display:flex;
+  flex-wrap: wrap;
+}
+
 .search input {
-  /* flex: 1; */
   border: none;
   font-size: 1em;
   font-family: var(--font-raleway);
@@ -99,13 +93,14 @@ font-size: 18px;
   outline: none;
   
 }
-.filter{
+
+.form select{
   border: none;
   font-size: 1em;
-  font-family: var(--font-raleway);
-  padding:0 13em 0 0.5em;
+  font-family: Inter;
   color: #000;
   outline: none;
+  padding:0 11em 0 0.5em;
 
 }
 .submit_btn{
@@ -119,4 +114,55 @@ font-size: 18px;
 .submit_btn:hover{
   color:#fff;
   background-color:#eb9ec4;
+}
+
+.container{
+  width: 100%;
+  margin-top: 4em;
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.card{
+  background-color:#fff;
+  width:140px;
+  margin:10px;
+  padding:10px 20px;
+  font-size:1em;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-radius: 10px;
+  box-shadow: 0px 7px 24px 0px #DCDFE4;
+}
+
+.circle{
+  /* background-color:#F4CBDF; */
+  padding:10px 12px;
+  border-radius: 15px;
+}
+
+@media screen and (max-width: 1000px) {
+  .form input{
+    padding:0;
+  }
+  .form select{
+    padding: 0 35px 0 0;
+  }
+  .submit_btn{
+    margin-top:10px;
+  }
+}
+
+@media screen and (max-width: 400px) {
+  .form input{
+    padding:0;
+  }
+  .form select{
+    padding: 0 20px 0 0;
+  }
+  .search{
+    width: 60%;
+  }
 }

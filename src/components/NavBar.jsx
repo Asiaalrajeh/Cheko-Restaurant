@@ -15,10 +15,9 @@ export const NavBar = () => {
        
         {/* mode toggle */}
         <div className="mode">
-            <h5>heli</h5>
             <button>light</button>
         </div>
-            <SearchBar/>
+            {/* <SearchBar/> */}
         </div>
  
     
