@@ -8,7 +8,7 @@ const Home = (prop) => {
     const [error, setError] = useState(null);
     const [isLoaded, setIsLoaded] = useState(false);
     const [items, setItems] = useState([]);
-    const [fitems, setFItems] = useState([]);
+    // const [fitems, setFItems] = useState([]);
  
      console.log(prop);
     
@@ -19,7 +19,6 @@ const Home = (prop) => {
           (result) => {
             setIsLoaded(true);
             setItems(result);
-            setFItems(result)
           },
          
           (error) => {
@@ -32,7 +31,7 @@ const Home = (prop) => {
     }, [])
 
     const filterd = items.filter((item)=>{
-      if(item.category.toLowerCase().includes(prop.f) && (item.name.toLowerCase().includes(prop.p) || item.category.toLowerCase().includes(prop.p))) 
+      if(item.category.toLowerCase().includes(prop.f) && (item.name.toLowerCase().includes(prop.p) || item.description.toLowerCase().includes(prop.p))) 
        return item;
       });
 
@@ -45,22 +44,23 @@ const Home = (prop) => {
         return (
           <div>
             <Category items={items}/>
-          <ul>
+            <vr/>
+          <div className='container'>
            { filterd.length > 0 ?
             filterd.map(item => (
-              <li key={item.id}>
+              <div key={item.id}>
                 <FoodCard food ={item}/>
-              </li>
+              </div>
             )) :
             <div className='noResult'>
               no result found
             </div>
           }
-          </ul>
+          </div>
           </div>
         );
       }
     }
 
 
-export default Home
+export default Home;

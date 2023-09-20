@@ -47,13 +47,30 @@ const Category = ({items}) => {
  const [DrinksCount, setDCount]= useState();
  const [SoupCount, setSCount]= useState();
  const [SushiCount, setSushiCount]= useState();
+ const [c1, setC1] = useState([]);
 
+
+//  const Category1 = () => {
+//     items.filter((obj) => {
+//         if(obj.category === 'alias' || obj.category === 'facere' ){
+//             console.log(obj)
+//            // setC1(obj);
+//         }
+//         setC1(current => [...current, obj])
+//     }
+//     )
+
+//     console.log(c1)
+//     setBCount(c1.length)
+//  }
 
  useEffect(() => { 
-    setBCount(items.filter(obj => obj.category === 'quod').length)
-    setDCount(items.filter(obj => obj.category === 'quo').length)
-    setSCount(items.filter(obj => obj.category === 'sequi').length)
-    setSushiCount(items.filter(obj => obj.category === 'corrupti').length)
+   // Category1();
+    
+    setBCount(items.filter(obj => obj.category === 'facere').length)
+    setDCount(items.filter(obj => obj.category === 'alias').length)
+    setSCount(items.filter(obj => obj.category === 'placeat').length)
+    setSushiCount(items.filter(obj => obj.category === 'eum').length)
 
     
     {arr.map(item => {
@@ -73,13 +90,15 @@ const Category = ({items}) => {
         return item;
     })}
       
- },[items,BreakfastCount,DrinksCount,SoupCount,SushiCount]);
+ },[BreakfastCount,DrinksCount,SoupCount,SushiCount]);
 
-
+ //[items,BreakfastCount,DrinksCount,SoupCount,SushiCount]
   return (
     <div className='container'>
-        {arr.map(item => (
+        {arr.map((item, index) => (
+             <div key={index}>
             <CategoryCard item = {item}/>
+            </div>
         ))}
 
     </div>

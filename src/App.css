@@ -116,6 +116,12 @@ body{
   background-color:#eb9ec4;
 }
 
+.verticleLine{
+  height: 100%;
+  width: 1;
+  background-color: #909090;
+}
+
 .container{
   width: 100%;
   margin-top: 4em;
@@ -144,7 +150,67 @@ body{
 }
 
 .noResult{
-  
+
+}
+.foodcard{
+  background-color:#fff;
+  /* width:140px; */
+  margin:10px;
+  padding:10px;
+  font-size:1em;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-radius: 10px;
+  box-shadow: 0px 7px 24px 0px #DCDFE4;
+}
+.foodImg img{
+  width:150px;
+  height: 140px;
+  border-radius: 15px;
+  /* border-reduis:10px; */
+}
+
+.cardText{
+  display:flex;
+  flex-direction: column;
+  margin-left: 10px;
+}
+
+.cardText div:nth-of-type(1){
+  margin-bottom:30px;
+}
+
+.cardText div:nth-of-type(1) span{
+opacity: 0.5;
+font-size:0.8em;
+}
+
+.cardText div:nth-of-type(2){
+display: flex;
+font-size: 1.1em;
+margin-bottom:0;
+
+}
+
+.counter{
+ 
+}
+
+.cardText div:nth-of-type(2) button{
+  background-color:#F4CBDF;
+  border: none;
+  height: 30px;
+  width: 30px;
+  border-radius: 8px;
+  font-size: 1.1em;
+
+  }
+
+.cardText div:nth-of-type(2) p{
+ color:#F4CBDF; 
+ font-size: 1.1em;
+ margin-right: 40px;
 }
 
 @media screen and (max-width: 1000px) {
