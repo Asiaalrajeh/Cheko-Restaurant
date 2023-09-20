@@ -1,20 +1,41 @@
 import React from "react";
+import { useState} from 'react';
+import Pop from "./Pop";
 
 export const FoodCard = ({food}) => {
 
+    const [open,setOpen]= useState(false);
+    const best = ["hill","puddle"];
+
     const x = () => {
-        return(
-            console.log(food.name)
-        )
+        setOpen(true);
     }
 
     return(
-    <div className="foodcard" onClick={x}>
+        <div className="back">
+    <div className="foodcard" onClick={()=> {setOpen(true);}}>
         
-
         <div className="foodImg">
             <img src={food.image !== 'N/A' ? food.image : 'https://via.placeholder.com/400' } alt={food.name} />
         </div>
+
+        {
+            best.length > 0  ?
+            best.map(item =>
+                item === food.name ? 
+                <div key={item.id}>
+                    <div className="best">
+                        best sale 
+                    </div>
+               </div>
+                : <></>
+
+             )
+            :
+            <></>
+            
+        }
+
 
         <div className="cardText">
             <div>
@@ -27,14 +48,19 @@ export const FoodCard = ({food}) => {
             <p>{food.price} SR</p>
 
 
-            {/* <div className="counter" > */}
             <button >-</button>
             <div style={{padding:5}}>0</div>
             <button >+</button>
-            {/* </div> */}
+           
             </div>
         </div>
     </div>
+   
+    { open? <Pop close = {setOpen} food = {food}/>: <></>}
+
+    </div>
+   
+   
 
     );
 }

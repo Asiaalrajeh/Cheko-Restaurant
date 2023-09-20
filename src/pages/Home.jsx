@@ -44,7 +44,11 @@ const Home = (prop) => {
         return (
           <div>
             <Category items={items}/>
-            <vr/>
+            {/* <div>
+              <div>
+
+              </div>
+            </div> */}
           <div className='container'>
            { filterd.length > 0 ?
             filterd.map(item => (
