@@ -4,11 +4,34 @@ import Pop from "./Pop";
 
 export const FoodCard = ({food}) => {
 
-    const [open,setOpen]= useState(false);
+    const data = [{id:"1",count:0},{id:"2",count:0},{id:"3",count:0}];
     const best = ["hill","puddle"];
+    const [open,setOpen]= useState(false);
+    const [counter,setCounter]= useState(data);
+    const [val,setVal]= useState();
+    
+    const  increasing = () => {
+       const newCounter = counter.map(item => {
+            if(item.id === food.id){
+                return {...item,count: item.count +1}
+            }
+            return item;
+        })
 
-    const x = () => {
-        setOpen(true);
+        setCounter(newCounter);
+        
+    }
+
+    const decreasing = () => {
+        const newCounter = counter.map(item => {
+            if(item.id === food.id){
+                return {...item,count: item.count -1}
+            }
+            return item;
+        })
+
+        setCounter(newCounter);
+
     }
 
     return(
@@ -48,15 +71,25 @@ export const FoodCard = ({food}) => {
             <p>{food.price} SR</p>
 
 
-            <button >-</button>
-            <div style={{padding:5}}>0</div>
-            <button >+</button>
+            <button onClick={decreasing}>-</button>
+            <div style={{padding:5}}>
+                {
+                    counter.map(item => {
+                       if(item.id === food.id) {
+                        return item.count;
+                       }
+                      
+                        })
+                        
+                }
+                </div>
+            <button onClick={increasing} >+</button>
            
             </div>
         </div>
     </div>
    
-    { open? <Pop close = {setOpen} food = {food}/>: <></>}
+    { open? <Pop close = {setOpen} food = {food} />: <></>}
 
     </div>
    
