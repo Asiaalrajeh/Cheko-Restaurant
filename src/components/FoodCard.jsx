@@ -1,39 +1,14 @@
 import React from "react";
 import { useState} from 'react';
 import Pop from "./Pop";
+import Counter from "./Counter";
 
-export const FoodCard = ({food}) => {
+export const FoodCard = ({food,counter,set}) => {
 
-    const data = [{id:"1",count:0},{id:"2",count:0},{id:"3",count:0}];
     const best = ["hill","puddle"];
     const [open,setOpen]= useState(false);
-    const [counter,setCounter]= useState(data);
-    const [val,setVal]= useState();
-    
-    const  increasing = () => {
-       const newCounter = counter.map(item => {
-            if(item.id === food.id){
-                return {...item,count: item.count +1}
-            }
-            return item;
-        })
-
-        setCounter(newCounter);
-        
-    }
-
-    const decreasing = () => {
-        const newCounter = counter.map(item => {
-            if(item.id === food.id){
-                return {...item,count: item.count -1}
-            }
-            return item;
-        })
-
-        setCounter(newCounter);
-
-    }
-
+   
+ 
     return(
         <div className="back">
     <div className="foodcard" onClick={()=> {setOpen(true);}}>
@@ -61,40 +36,19 @@ export const FoodCard = ({food}) => {
 
 
         <div className="cardText">
-            <div>
+            <div style={{marginBottom:50}}>
             <h3>{food.name}</h3>
             <span>{food.calorie} Cal</span>
             </div>
 
-            
-            <div>
-            <p>{food.price} SR</p>
-
-
-            <button onClick={decreasing}>-</button>
-            <div style={{padding:5}}>
-                {
-                    counter.map(item => {
-                       if(item.id === food.id) {
-                        return item.count;
-                       }
-                      
-                        })
-                        
-                }
-                </div>
-            <button onClick={increasing} >+</button>
-           
-            </div>
+            <Counter  close = {setOpen} food={food} counter={counter} set={set}/> 
         </div>
     </div>
    
-    { open? <Pop close = {setOpen} food = {food} />: <></>}
+    { open? <Pop close = {setOpen} food = {food} counter={counter} set={set}/>: <></>}
 
     </div>
    
-   
-
     );
 }
 

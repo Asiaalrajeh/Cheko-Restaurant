@@ -1,6 +1,7 @@
 import React from 'react'
+import Counter from './Counter'
 
-function Pop({close,food}) {
+function Pop({close,food,counter,set}) {
   return (
     <div className="window">
         <div className="popcard">
@@ -23,14 +24,8 @@ function Pop({close,food}) {
             <div className="popImg">
             <img src={food.image !== 'N/A' ? food.image : 'https://via.placeholder.com/400' } alt={food.name} />
             </div>
-            <div className='popPrice'>
-            <p>{food.price} SR</p>
 
-
-            <button >-</button>
-            <div style={{padding:5}}>0</div>
-            <button >+</button>
-            </div>
+            <Counter food={food} counter={counter} set={set}/>
         </div>
 
     </div>

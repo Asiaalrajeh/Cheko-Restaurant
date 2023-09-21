@@ -8,7 +8,7 @@ import coffeIcon from '../assets/img/coffee-cup.svg';
 import CategoryCard from './CategoryCard';
 
 
-const arr = [
+var arr = [
     {
         label : 'Breakfast',
         img: breakfastIcon,
@@ -42,13 +42,30 @@ const arr = [
     
 ] 
 
-const Category = ({items}) => {
+const Category = ({items,orders}) => {
  const [BreakfastCount, setBCount]= useState();
  const [DrinksCount, setDCount]= useState();
  const [SoupCount, setSCount]= useState();
  const [SushiCount, setSushiCount]= useState();
+ const [OrdersCount, setOrdersCount]= useState();
+
  const [c1, setC1] = useState([]);
 
+const countOrders = () => {
+    
+   const t = orders.reduce((total,item)=> total + item.count,0);
+//    console.log(t)
+   setOrdersCount(t);
+
+   arr.map(item => {
+    if(item.label === 'Orders'){
+        return item.count= OrdersCount;
+    }
+    return item;
+   })
+
+
+}
 
 //  const Category1 = () => {
 //     items.filter((obj) => {
@@ -66,7 +83,7 @@ const Category = ({items}) => {
 
  useEffect(() => { 
    // Category1();
-    
+    countOrders();
     setBCount(items.filter(obj => obj.category === 'facere').length)
     setDCount(items.filter(obj => obj.category === 'alias').length)
     setSCount(items.filter(obj => obj.category === 'placeat').length)
@@ -86,11 +103,14 @@ const Category = ({items}) => {
         if(item.label === 'Sushi'){
             return item.count= SushiCount;
         }
+        // if(item.label === 'Orders'){
+        //     return item.count= OrdersCount;
+        // }
 
         return item;
     })}
       
- },[BreakfastCount,DrinksCount,SoupCount,SushiCount]);
+ },[BreakfastCount,DrinksCount,SoupCount,SushiCount,orders,OrdersCount]);
 
  //[items,BreakfastCount,DrinksCount,SoupCount,SushiCount]
   return (
