@@ -1,7 +1,7 @@
 import React from 'react'
 import Counter from './Counter'
 
-function Pop({close,food,counter,set}) {
+function Pop({close,food,counter,set,best}) {
   return (
     <div className="window">
         <div className="popcard">
@@ -9,11 +9,30 @@ function Pop({close,food,counter,set}) {
             <button onClick={() => {close(false)}}>x</button>
             </div>
         <div className="cardText">
-            <div>
-            <h2>{food.name}</h2>
-            <span> {food.calorie} Cal</span>
+            <div style={{display:"flex", alignItems:"center"}}>
+            <h2>{food.name}</h2> 
+            {
+            best.length > 0  ?
+            best.map(item =>
+                item === food.name ? 
+                <div key={item.id}>
+                    <div className="best-pop">
+                        best sale 
+                    </div>
+               </div>
+                : <></>
+
+             )
+            :
+            <></>
+            
+        }
+            
+            {/* <span> {food.calorie} Cal</span> */}
             </div>
+            <span> {food.calorie} Cal</span>
         </div>
+       
 
         <div className="description">
                 <p>

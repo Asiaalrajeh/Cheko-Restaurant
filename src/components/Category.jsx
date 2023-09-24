@@ -59,7 +59,7 @@ const countOrders = () => {
 
    arr.map(item => {
     if(item.label === 'Orders'){
-        return item.count= OrdersCount;
+        return item.count= t;
     }
     return item;
    })

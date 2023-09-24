@@ -35,7 +35,7 @@ function Counter({close,food,counter,set}) {
      }
   return (
     
-    <div className='popPrice'onClick={() => {close(false)}}>
+    <div className='popPrice'>
     <p>{food.price} SR</p>
 
 

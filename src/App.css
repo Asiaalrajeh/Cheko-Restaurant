@@ -68,6 +68,18 @@ body{
   color: #000;
 } */
 
+.mode{
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  margin-left: 20px;
+}
+
+.mode-btn{
+  padding: 12px 5px;
+  border-radius: 50px;
+  background-color: #000;
+}
 .search {
   position: absolute;
   width: 78%;
@@ -181,7 +193,7 @@ body{
   margin-bottom:30px;
 } */
 
-.cardText div:nth-of-type(1) span{
+.cardText span{
 opacity: 0.5;
 font-size:0.8em;
 }
@@ -217,6 +229,15 @@ margin-bottom:0;
   border-radius: 5px;
   background: #D0EAE3;
   padding: 0 5px;
+}
+
+.best-pop{
+  margin-left:10px;
+  color: #599887;
+  border-radius: 5px;
+  background: #D0EAE3;
+  padding: 0 5px;
+
 }
 
 
@@ -260,6 +281,7 @@ margin-bottom:0;
 
 .description{
   margin-left: 10px;
+  margin-top: 20px;
   opacity: 0.4;
 }
 
@@ -295,6 +317,16 @@ margin-bottom:0;
   font-size: 1.3em;
   margin-right: 40px;
 }
+
+.marker-btn{
+  background: none;
+  border: none;
+  cursor: pointer;
+}
+/* .marker-btn:hover{
+  color:#F4CBDF;
+
+} */
 @media screen and (max-width: 1000px) {
   .form input{
     padding:0;
@@ -307,6 +339,9 @@ margin-bottom:0;
   }
   .popcard{
     width: 50%;
+  }
+  .mode{
+    margin:10px
   }
 }
 
@@ -323,5 +358,9 @@ margin-bottom:0;
 
   .popcard{
     width: 80%;
+  }
+
+  .mode{
+    margin:10px
   }
 }
