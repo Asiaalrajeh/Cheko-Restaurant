@@ -5,10 +5,7 @@ import App from './App';
 import Map from './pages/Map';
 import reportWebVitals from './reportWebVitals';
 import {createBrowserRouter,RouterProvider,} from "react-router-dom";
-<link
-href="https://api.mapbox.com/mapbox-gl-js/v1.10.1/mapbox-gl.css"
-rel="stylesheet"
-/>
+
 
 const router = createBrowserRouter([
   {

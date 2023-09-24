@@ -5,7 +5,8 @@ import Mapp, {Marker, NavigationControl, Popup} from 'react-map-gl';
 import 'mapbox-gl/dist/mapbox-gl.css';
 import { useState, useEffect } from 'react';
 import locationImg from '../assets/img/location.svg';
-
+import { Link } from "react-router-dom";
+import arrow from '../assets/img/arrow_right.svg';
  
 
 function Map () {
@@ -14,28 +15,14 @@ function Map () {
   const [isLoaded, setIsLoaded] = useState(false);
   const [items, setItems] = useState([]);
   const [selected,setSelected]= useState(null);
-  const [x,setX]= useState(false);
   const [lng,setLng]= useState(9.7462);
   const [lat,setLat]= useState(30.8335);
-  const [viewport,setViewport] = useState({
-    // latitude:9.7462,
-    // longitude:30.8335,
-    // width:window.innerWidth,
-    // height: window.innerHeight,
-    // zoom:3,
+ 
 
-  });
 
-  const pop = (item) => {
-    
-    return(<Popup latitude={item.lat} longitude={item.lng}>
-      <div>
-        {item.name}
-      </div>
-    </Popup>
-    )
-
-  }
+  const handleMarkerClick = marker => {
+    setSelected(marker);
+  };
 
   useEffect(() => {
     fetch("https://6506a5173a38daf4803e8f5c.mockapi.io/api/cheko/restaurants")
@@ -63,59 +50,60 @@ function Map () {
   } else {
   return (
     <div>
-    <NavBar></NavBar>
-    <SearchMap/>
-    <div>Map</div>
-   
-<div className='map'>
-<Mapp            
-  mapStyle="mapbox://styles/mapbox/light-v10" 
-  mapboxAccessToken={'pk.eyJ1IjoiYXNpYS0yMzIzIiwiYSI6ImNsbXZ3ZnNiZTBwNHIycXBlOG1oYzhiMzcifQ.NXoy8iZCX0wwtmpuP8TwGQ'}
-  style={{
-    width:window.innerWidth,
-    height: window.innerHeight,
-    
-  }}
-  initialViewState={{
-    longitude:lng,
-    latitude:lat,
-    zoom:3,
-  }}
-  // {...viewport}
-  //  onViewportChange={(newView)=> setViewport(newView)}
-   //mapStyle="mapbox://styles/mapbox/streets-v9"
->
-{items.map(item => (
-  <Marker  key={item.id} longitude={item.lng} latitude={item.lat}>
- 
-   <button className="marker-btn" onClick={() => {setSelected(item); setX(true); console.log("clicked")
-    
-    }}>
-   <img src={locationImg} alt='Black marker'/>
-  
-   </button>
+    <NavBar/>
+            
+          <div className='map'>
 
-  
-    </Marker>
+          <Mapp            
+            mapStyle="mapbox://styles/mapbox/light-v10" 
+            mapboxAccessToken={'pk.eyJ1IjoiYXNpYS0yMzIzIiwiYSI6ImNsbXZ3ZnNiZTBwNHIycXBlOG1oYzhiMzcifQ.NXoy8iZCX0wwtmpuP8TwGQ'}
+            style={{
+              width:window.innerWidth,
+              height: window.innerHeight,
+              
+            }}
+            initialViewState={{
+              longitude:lng,
+              latitude:lat,
+              zoom:3,
+            }}
+           
+          >
+          {items.map(item => (
+            <Marker  key={item.id} latitude={item.lat} longitude={item.lng} >
+          
+            <button className="marker-btn" onClick={() => {handleMarkerClick(item)}}>
+            <img src={locationImg} alt='Black marker'/>
+            
+            </button>
+              </Marker>
+            
+          ))}
 
-    
-    
-))
-}
+          {selected !== null? (<Popup  key={selected.id} latitude={selected.lat} longitude={selected.lng} closeOnClick={false} >
+                <div className='popMap'>
+                <div className="mapImg">
+                <img src={selected.image !== 'N/A' ? selected.image : 'https://via.placeholder.com/400' } alt={selected.name} />
+                  </div>
+                  <div className="mapText">
+                    <h3 style={{marginBottom:30}}>{selected.name}</h3>
+                    
 
+                    <div className='mapNav'>
+                      <span>menu list</span>
+                      <button><Link to="/"><img src={arrow} alt='arrow'/></Link></button>
+                    </div>
+                    </div>
+                 
+                </div>
+              </Popup>) : <></>
+              
+            }
 
-{x ? <Popup longitude={selected.lng} latitude={selected.lat}>
-      <div>
-        hi
-        {selected.name}
-      </div>
-    </Popup>
-    :null
-   }
-
-<NavigationControl position='top-right'/>
-  </Mapp>
-  </div>
+          <NavigationControl position='top-right'/>
+            </Mapp>
+            </div>
+            <SearchMap/>
     </div>
   )
 }
