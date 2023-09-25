@@ -7,6 +7,9 @@ import { useState, useEffect } from 'react';
 import locationImg from '../assets/img/location.svg';
 import { Link } from "react-router-dom";
 import arrow from '../assets/img/arrow_right.svg';
+import  { useContext } from "react";
+import { ThemeContext } from "../Theme";
+
  
 
 function Map () {
@@ -18,6 +21,7 @@ function Map () {
   const [lng,setLng]= useState(9.7462);
   const [lat,setLat]= useState(30.8335);
  
+  const { theme } = useContext(ThemeContext);
 
 
   const handleMarkerClick = marker => {
@@ -49,13 +53,13 @@ function Map () {
     return <div>Loading...</div>;
   } else {
   return (
-    <div>
+    <div className={`App ${theme}`}>
     <NavBar/>
             
           <div className='map'>
 
           <Mapp            
-            mapStyle="mapbox://styles/mapbox/light-v10" 
+            mapStyle={theme === "light-theme" ?"mapbox://styles/mapbox/light-v10" : "mapbox://styles/mapbox/dark-v10" }
             mapboxAccessToken={'pk.eyJ1IjoiYXNpYS0yMzIzIiwiYSI6ImNsbXZ3ZnNiZTBwNHIycXBlOG1oYzhiMzcifQ.NXoy8iZCX0wwtmpuP8TwGQ'}
             style={{
               width:'100%',
@@ -81,7 +85,7 @@ function Map () {
           ))}
 
           {selected !== null? (<Popup  key={selected.id} latitude={selected.lat} longitude={selected.lng} closeOnClick={false} >
-                <div className='popMap'>
+                <div className={`popMap ${theme}`}>
                 <div className="mapImg">
                 <img src={selected.image !== 'N/A' ? selected.image : 'https://via.placeholder.com/400' } alt={selected.name} />
                   </div>

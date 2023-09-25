@@ -2,12 +2,15 @@ import React from 'react';
 import { useState} from "react"
 import  search from '../assets/img/search 1.svg';
 import filterImg from '../assets/img/filter-list.svg';
+import  { useContext } from "react";
+import { ThemeContext } from "../Theme";
 
 
 
 function SearchMap() {
     const [MarkSearch, setMarkSearch] = useState('');
     const [filter, setFilter] = useState('');
+    const { theme } = useContext(ThemeContext);
 
     const OnSearch = e => {
         setMarkSearch(e.target.searchWord.value);
@@ -18,20 +21,21 @@ function SearchMap() {
 
   return (
     <div>
-    <div className="search">
+    <div className={`search ${theme}`}>
        <form className='form' onSubmit={OnSearch}>
          <img src={search} alt="search_icon" />
-         <input type="text" placeholder="Search" id='searchWord'/>
+         <input type="text" placeholder="Search" id='searchWord' className={`${theme}`}/>
 
          <img src={filterImg} alt="filter_icon" />
        
          <select
                name="filter"
                id='select'
+               className={`${theme}`}
            >
                <option value="">Filter</option>
-               <option value="quod">..</option>
-               <option value="magni">..</option>
+               <option value="">..</option>
+               <option value="">..</option>
                <option value="">Others</option>
            </select>
           

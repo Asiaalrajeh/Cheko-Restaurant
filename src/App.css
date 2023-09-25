@@ -155,7 +155,7 @@ body {
 }
 
 .mode-btn{
-  padding: 12px 5px;
+  /* padding: 12px 5px; */
   border-radius: 50px;
   background-color: var( --mode-color);
 }
@@ -423,7 +423,7 @@ margin-bottom:0;
 } */
 
 .popMap{
-  background-color:#fff;
+  background-color:var(--foodcard-color);
   font-size:1em;
   display: flex;
   justify-content: space-between;
@@ -495,6 +495,14 @@ margin-right: 20px;
 
 #noMargin{
   margin-top:0;
+}
+
+.btn{
+  padding:5px 5px;
+  background-color:#F4CBDF;
+  border:none;
+  border-radius: 10px;
+
 }
 @media screen and (max-width: 1000px) {
   .form input{

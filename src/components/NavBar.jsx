@@ -21,7 +21,10 @@ export const NavBar = () => {
         {/* mode toggle */}
         <div className="mode">
             <img src={theme === "light-theme" ? sun :sunDark} alt="sun"/>
-            <button className={`mode-btn ${theme}`} onClick={() => toggleTheme()}></button>
+            {/* <button className={`mode-btn ${theme}`} onClick={() => toggleTheme()}></button> */}
+            <div className={`mode-btn ${theme}`} onClick={() => toggleTheme()}>
+                <button className="btn"></button>
+            </div>
             <img src={theme === "light-theme" ? moon : moonDark} alt="moon" style={{width:"60%"}}/>
         </div>
         
