@@ -1,13 +1,91 @@
+:root{
+  --text-color-light: black;
+  --text-color-dark: white;
 
+  --background-color-light:#F5F6F8;
+  --background-color-dark: #111315;
+
+  --form-background-light:#FFF;
+  --form-background-dark: #3F4142;
+
+  --modeButton-color-light:#000;
+  --modeButton-color-dark:#3F4142;
+
+
+  --foodcard-background-light:#FFF;
+  --foodcard-background-dark:#2A2C2D;
+
+  --foodcard-shadow-light:0px 7px 24px 0px #DCDFE4;
+  --foodcard-shadow-dark:none;
+
+  --counter-border-light:none;
+  --counter-border-dark:1px solid #F4CBDF;
+
+  --counter-background-light:#F4CBDF;
+  --counter-background-dark:#2A2C2D;
+
+  --counter-textColor-light:black;
+  --counter-textColor-dark:#F4CBDF;
+
+  --price-color-light:#F4CBDF;
+  --price-color-dark:#979797;;
+
+  
+
+
+
+}
+.light-theme {
+  --background-color: var(--background-color-light);
+  --text-color: var(--text-color-light);
+  --form-background: var(--form-background-light);
+  --mode-color:var(--modeButton-color-light);
+  --foodcard-color:var(--foodcard-background-light);
+  --foodcard-shadow:var(--foodcard-shadow-light);
+  --counter-border:var(--counter-border-light);
+  --counter-background:var(--counter-background-light);
+  --counter-textColor:var(--counter-textColor-light);
+  --price-color:var(--price-color-light);
+
+}
+
+.dark-theme {
+  --background-color: var(--background-color-dark);
+  --text-color: var(--text-color-dark);
+  --form-background: var(--form-background-dark);
+  --mode-color:var(--modeButton-color-dark);
+  --foodcard-color:var(--foodcard-background-dark);
+  --foodcard-shadow:var(--foodcard-shadow-dark);
+  --counter-border:var(--counter-border-dark);
+  --counter-background:var(--counter-background-dark);
+  --counter-textColor:var(--counter-textColor-dark);
+  --price-color:var(--price-color-dark);
+
+}
+
+
+
+
+
+@font-face {
+	font-family: Inter;
+	src: url('./assets/fonts/Inter-Regular.ttf');
+	/* font-weight: 500; */
+}
 *{
   margin: 0;
   padding: 0;
 }
 
-body{
-  background-color: #F5F6F8 !important;
-  color:#000 !important;
+body {
+  background-color: var(--background-color);
+  /* color:#000 !important; */
   font-family: Inter !important;
+}
+
+.App{
+  background-color: var(--background-color);
+  color: var(--text-color);
 }
 
 @media (min-width:1700px) {
@@ -79,7 +157,7 @@ body{
 .mode-btn{
   padding: 12px 5px;
   border-radius: 50px;
-  background-color: #000;
+  background-color: var( --mode-color);
 }
 .search {
   position: absolute;
@@ -88,8 +166,19 @@ body{
   top: 10%;
   padding: 0.5em 1em;
   border-radius: 15px;
-  background: #FFF;
+  background: var(--form-background);
   box-shadow: 0px 4px 14px 0px rgba(0, 0, 0, 0.05);
+}
+
+#select{
+  background: var(--form-background);
+  color:var(--text-color);
+}
+
+#searchWord{
+  background: var(--form-background);
+  color:var(--text-color);
+
 }
 
 .form {
@@ -144,7 +233,8 @@ body{
 }
 
 .card{
-  background-color:#fff;
+  /* background-color:#fff; */
+  color:#000;
   width:140px;
   margin:10px;
   padding:10px 20px;
@@ -169,7 +259,7 @@ body{
 }
 
 .foodcard{
-  background-color:#fff;
+  background-color:var(--foodcard-color);
   position:relative;
   margin:10px;
   padding:10px;
@@ -178,7 +268,7 @@ body{
   justify-content: space-between;
   align-items: center;
   border-radius: 10px;
-  box-shadow: 0px 7px 24px 0px #DCDFE4;
+  box-shadow:var(--foodcard-shadow);
 }
 .foodImg img{
   width:150px;
@@ -263,7 +353,7 @@ margin-bottom:0;
   width:500px;
   height:500px;
   border-radius:15px;
-  background-color:#fff;
+  background-color:var(--foodcard-color);
   padding:20px;
   margin:auto;
   
@@ -307,16 +397,17 @@ margin-bottom:0;
 }
 
 .popPrice button{
-  background-color:#F4CBDF;
-  border: none;
+  background-color:var(--counter-background);
+  border: var(--counter-border);
   height: 30px;
   width: 30px;
   border-radius: 8px;
   font-size: 1.1em;
+  color:var(--counter-textColor);
 }
 
 .popPrice p{
-  color:#F4CBDF; 
+  color:var(--price-color); 
   font-size: 1.3em;
   margin-right: 40px;
 }
@@ -421,6 +512,9 @@ margin-right: 20px;
   .mode{
     margin:10px
   }
+  .container{
+    margin-top:6em;
+  }
   /* .hr-lines{
      margin: 20px 150px;
 
@@ -436,6 +530,9 @@ margin-right: 20px;
   .hr-lines:after{
     width: 60%;
     left:50%;
+  }
+  .container{
+    margin-top:8em;
   }
 
 }
@@ -461,5 +558,8 @@ margin-right: 20px;
   .hr-lines:after{
     width: 35%;
     left: 70%;
+  }
+  .container{
+    margin-top:8em;
   }
 }

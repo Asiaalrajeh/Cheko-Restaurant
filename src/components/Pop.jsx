@@ -1,10 +1,13 @@
-import React from 'react'
-import Counter from './Counter'
+import React from 'react';
+import Counter from './Counter';
+import  { useContext } from "react";
+import { ThemeContext } from "../Theme";
 
 function Pop({close,food,counter,set,best}) {
+    const { theme} = useContext(ThemeContext);
   return (
     <div className="window">
-        <div className="popcard">
+        <div className={`popcard ${theme}`}>
             <div className="closeBtn">
             <button onClick={() => {close(false)}}>x</button>
             </div>

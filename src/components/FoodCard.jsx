@@ -2,11 +2,14 @@ import React from "react";
 import { useState} from 'react';
 import Pop from "./Pop";
 import Counter from "./Counter";
+import  { useContext } from "react";
+import { ThemeContext } from "../Theme";
 
 export const FoodCard = ({food,counter,set}) => {
 
     const best = ["hill","puddle"];
     const [open,setOpen]= useState(false);
+    const { theme } = useContext(ThemeContext);
 
     const handleButtonClick = (event) => {
         event.stopPropagation(); // Stop the click event from propagating to the parent div
@@ -15,7 +18,7 @@ export const FoodCard = ({food,counter,set}) => {
  
     return(
         <div className="back">
-    <div className="foodcard" onClick={()=> {setOpen(true)}}>
+    <div className={`foodcard ${theme}`} onClick={()=> {setOpen(true)}}>
         
         <div className="foodImg">
             <img src={food.image !== 'N/A' ? food.image : 'https://via.placeholder.com/400' } alt={food.name} />

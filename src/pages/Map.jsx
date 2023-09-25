@@ -58,14 +58,14 @@ function Map () {
             mapStyle="mapbox://styles/mapbox/light-v10" 
             mapboxAccessToken={'pk.eyJ1IjoiYXNpYS0yMzIzIiwiYSI6ImNsbXZ3ZnNiZTBwNHIycXBlOG1oYzhiMzcifQ.NXoy8iZCX0wwtmpuP8TwGQ'}
             style={{
-              width:window.innerWidth,
+              width:'100%',
               height: window.innerHeight,
               
             }}
             initialViewState={{
               longitude:lng,
               latitude:lat,
-              zoom:3,
+              zoom:4,
             }}
            
           >

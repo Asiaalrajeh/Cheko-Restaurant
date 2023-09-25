@@ -1,8 +1,11 @@
 import React from 'react'
+import  { useContext } from "react";
+import { ThemeContext } from "../Theme";
 
 
 function Counter({close,food,counter,set}) {
 
+    const { theme } = useContext(ThemeContext);
 
     const  increasing = () => {
         const newCounter = counter.map(item => {
@@ -34,7 +37,7 @@ function Counter({close,food,counter,set}) {
     <div className='popPrice'>
     <p>{Math.floor(food.price)} SR</p>
 
-    <button onClick={decreasing}>-</button>
+    <button onClick={decreasing} className={`${theme}`}>-</button>
     <div style={{padding:5}}>
         {
             counter.map(item => {
@@ -46,7 +49,7 @@ function Counter({close,food,counter,set}) {
                 
         }
         </div>
-    <button onClick={increasing} >+</button>
+    <button onClick={increasing} className={`${theme}`} >+</button>
    
     </div>
   )

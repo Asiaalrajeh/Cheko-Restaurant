@@ -200,6 +200,12 @@ const Home = (prop) => {
               </div>
             ): <></>
             }
+              
+            {
+            //  (Others.length === 0 && SushiArr.length === 0 && SoupArr.length === 0 && Darr.length && Barr.length ) ? <></> : <div className='container'> <div>no result found </div> </div>
+
+
+            }
 
 
           </div>
