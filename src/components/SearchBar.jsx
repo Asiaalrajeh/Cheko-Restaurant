@@ -2,7 +2,6 @@ import React from 'react'
 import { useState} from "react"
 import  search from '../assets/img/search 1.svg';
 import filterImg from '../assets/img/filter-list.svg';
-import Category from './Category';
 import Home from '../pages/Home';
 
 export const SearchBar = () => {
@@ -17,9 +16,7 @@ export const SearchBar = () => {
   const OnSearch = e => {
     setFoodSearch(e.target.searchWord.value);
     setFilter(e.target.select.value);
-    // console.log(FoodSearch);
-    // console.log(filter);
-    e.preventDefault();
+    e.preventDefault(); // to prevent page reload on submit
   }
 
   return (
@@ -28,21 +25,17 @@ export const SearchBar = () => {
         <form className='form' onSubmit={OnSearch}>
           <img src={search} alt="search_icon" />
           <input type="text" placeholder="Search" id='searchWord'/>
-          {/* value={FoodSearch} onChange={(e) => setFoodSearch(e.target.value)} */}
-
-          <img src={filterImg} alt="filter_icon" />
+         
+          <img src={filterImg} alt="filter_icon" id='line' />
         
           <select
                 name="filter"
                 id='select'
-                // value={filter}
-               // onChange={handleChangeFilter}
-               
             >
                 <option value="">Filter</option>
-                <option value="quod">Soup</option>
-                <option value="magni">Rice</option>
-                <option value="">Others</option>
+                <option value="soup">Soup</option>
+                <option value="sushi">Rice</option>
+                <option value="other">Others</option>
             </select>
            
       

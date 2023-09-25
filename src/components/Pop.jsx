@@ -28,7 +28,6 @@ function Pop({close,food,counter,set,best}) {
             
         }
             
-            {/* <span> {food.calorie} Cal</span> */}
             </div>
             <span> {food.calorie} Cal</span>
         </div>

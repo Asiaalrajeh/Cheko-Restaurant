@@ -8,7 +8,7 @@ import coffeIcon from '../assets/img/coffee-cup.svg';
 import CategoryCard from './CategoryCard';
 
 
-var arr = [
+const arr = [
     {
         label : 'Breakfast',
         img: breakfastIcon,
@@ -42,14 +42,13 @@ var arr = [
     
 ] 
 
-const Category = ({items,orders}) => {
+const Category = ({items,Breakfast,Drink,Soup,Sushi,orders}) => {
  const [BreakfastCount, setBCount]= useState();
  const [DrinksCount, setDCount]= useState();
  const [SoupCount, setSCount]= useState();
  const [SushiCount, setSushiCount]= useState();
  const [OrdersCount, setOrdersCount]= useState();
 
- const [c1, setC1] = useState([]);
 
 const countOrders = () => {
     
@@ -67,41 +66,28 @@ const countOrders = () => {
 
 }
 
-//  const Category1 = () => {
-//     items.filter((obj) => {
-//         if(obj.category === 'alias' || obj.category === 'facere' ){
-//             console.log(obj)
-//            // setC1(obj);
-//         }
-//         setC1(current => [...current, obj])
-//     }
-//     )
-
-//     console.log(c1)
-//     setBCount(c1.length)
-//  }
 
  useEffect(() => { 
-   // Category1();
     countOrders();
-    setBCount(items.filter(obj => obj.category === 'facere').length)
-    setDCount(items.filter(obj => obj.category === 'alias').length)
-    setSCount(items.filter(obj => obj.category === 'placeat').length)
-    setSushiCount(items.filter(obj => obj.category === 'eum').length)
+
+    setBCount(Breakfast.length)
+    setDCount(Drink.length)
+    setSCount(Soup.length)
+    setSushiCount(Sushi.length)
 
     
     {arr.map(item => {
         if(item.label === 'Breakfast'){
-            return item.count= BreakfastCount;
+            return item.count= Breakfast.length;
         }
         if(item.label === 'Drinks'){
-            return item.count= DrinksCount;
+            return item.count= Drink.length;
         }
         if(item.label === 'Soups'){
-            return item.count= SoupCount;
+            return item.count= Soup.length;
         }
         if(item.label === 'Sushi'){
-            return item.count= SushiCount;
+            return item.count= Sushi.length;
         }
         // if(item.label === 'Orders'){
         //     return item.count= OrdersCount;
@@ -110,9 +96,8 @@ const countOrders = () => {
         return item;
     })}
       
- },[BreakfastCount,DrinksCount,SoupCount,SushiCount,orders,OrdersCount]);
+ },[Breakfast,Drink,Soup,Sushi,orders,OrdersCount,BreakfastCount,DrinksCount,SoupCount,SushiCount]);
 
- //[items,BreakfastCount,DrinksCount,SoupCount,SushiCount]
   return (
     <div className='container'>
         {arr.map((item, index) => (

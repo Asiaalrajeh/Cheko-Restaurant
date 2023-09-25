@@ -7,7 +7,6 @@ export const FoodCard = ({food,counter,set}) => {
 
     const best = ["hill","puddle"];
     const [open,setOpen]= useState(false);
-    const [v,setV]= useState(false);
 
     const handleButtonClick = (event) => {
         event.stopPropagation(); // Stop the click event from propagating to the parent div

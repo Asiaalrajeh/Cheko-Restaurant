@@ -1,6 +1,5 @@
  import React from "react";
  import { Link } from "react-router-dom";
- import {SearchBar} from './SearchBar';
  import sun from '../assets/img/sunny.svg';
  import moon from '../assets/img/moon.svg';
  
@@ -21,7 +20,7 @@ export const NavBar = () => {
             <button className="mode-btn"></button>
             <img src={moon} alt="moon" style={{width:"60%"}}/>
         </div>
-            {/* <SearchBar/> */}
+        
         </div>
  
     
